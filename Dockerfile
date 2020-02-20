@@ -31,7 +31,7 @@ FROM python:${PYTHON_VERSION} AS dist
 ENV SUPERSET_HOME=/var/lib/superset/
 WORKDIR ${SUPERSET_HOME}
 COPY --from=build ${SUPERSET_HOME} .
-COPY docker/requirements-db.txt .
+COPY config/requirements-db.txt .
 
 # Patch dependencies (fix bigquery dependency)
 RUN sed -i '/six==/c six==1.14.0' requirements.txt
@@ -84,10 +84,7 @@ RUN groupadd supergroup && \
     chown -R superset:superset /etc/superset && \
     chown -R superset:superset ${SUPERSET_HOME}
 
-RUN rm -rf ./*
-
 # Configure Filesystem
-COPY docker/bin /usr/local/bin
 WORKDIR /home/superset
 VOLUME /etc/superset \
        /home/superset \
