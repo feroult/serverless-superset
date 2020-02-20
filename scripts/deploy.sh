@@ -6,9 +6,9 @@ run() {
     tar -zxf *.tar.gz
     cd apache*
     cp ../requirements.txt .
-    cat ../../requirements-db.txt >> requirements.txt
-    cp ../../app.yaml .
-    cp ../../superset_config.py .
+    cat ../../config/requirements-db.txt >> requirements.txt
+    cp ../../config/app.yaml .
+    cp ../../config/superset_config.py .
     gcloud app deploy -q
 }
 
