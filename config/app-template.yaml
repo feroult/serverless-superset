@@ -6,7 +6,7 @@ automatic_scaling:
   max_instances: 2
   max_concurrent_requests: 40
   
-entrypoint: gunicorn -b :$PORT -w 4 superset:app
+entrypoint: gunicorn -b :\$PORT -w 4 superset:app
 
 vpc_access_connector:
   name: \"projects/${PROJECT_ID}/locations/${REGION}/connectors/${VPC_NETWORK}-connector\"
