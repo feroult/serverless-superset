@@ -6,8 +6,8 @@ def randomString(stringLength=10):
     letters = string.ascii_lowercase
     return ''.join(random.choice(letters) for i in range(stringLength))
 
-APP_NAME = "DnA Studio"
-SECRET_KEY = '21adf2809644c51a0e166a05b3315f68212b297d'
+APP_NAME = "Superset on GCP"
+SECRET_KEY = 'my-app-secret-123'
 DATA_DIR = "/tmp/superset-" + randomString(20)
 
 # Mapbox
