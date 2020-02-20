@@ -1,0 +1,31 @@
+runtime: python37
+
+instance_class: F4
+automatic_scaling:
+  max_idle_instances: 1
+  max_instances: 2
+  max_concurrent_requests: 40
+  
+entrypoint: gunicorn -b :$PORT -w 4 superset:app
+
+vpc_access_connector:
+  name: "projects/x/locations/us-central1/connectors/superset-connector"
+
+env_variables:
+  SUPERSET_HOME: "/tmp/superset"
+  MAPBOX_API_KEY: ""
+  POSTGRES_USER: "superset"
+  POSTGRES_PASSWORD: "change-me"
+  POSTGRES_DB: "superset"
+  POSTGRES_HOST: "172.25.0.5"
+  POSTGRES_PORT: "5432"
+  REDIS_HOST: "10.213.9.211"
+  REDIS_PORT: "6379"
+
+handlers:
+- url: /static/assets
+  static_dir: superset/static/assets
+- url: /.*
+  secure: always
+  redirect_http_response_code: 301
+  script: auto
