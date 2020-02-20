@@ -10,5 +10,5 @@ gcloud sql databases create ${SQL_DATABASE} -i ${SQL_INSTANCE_NAME}
 
 gcloud sql users create ${SQL_USER} --password ${SQL_PASSWORD} -i  ${SQL_INSTANCE_NAME}
 
-SQL_IP_ADDRESS=$(gcloud sql instances describe superset-config | grep "\- ipAddress" | cut -d: -f2 | cut -c2-)
-export SQL_IP_ADDRESS
+SQL_HOST=$(gcloud sql instances describe ${SQL_INSTANCE_NAME} | grep "\- ipAddress" | cut -d: -f2 | cut -c2-)
+export SQL_HOST

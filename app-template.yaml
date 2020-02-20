@@ -1,0 +1,31 @@
+runtime: python37
+
+instance_class: F4
+automatic_scaling:
+  max_idle_instances: 1
+  max_instances: 2
+  max_concurrent_requests: 40
+  
+entrypoint: gunicorn -b :$PORT -w 4 superset:app
+
+vpc_access_connector:
+  name: \"projects/${PROJECT_ID}/locations/${REGION}/connectors/${VPC_NETWORK}-connector\"
+
+env_variables:
+  SUPERSET_HOME: \"/tmp/superset\"
+  MAPBOX_API_KEY: \"\"
+  POSTGRES_USER: \"${SQL_USER}\"
+  POSTGRES_PASSWORD: \"${SQL_PASSWORD}\"
+  POSTGRES_DB: \"${SQL_DATABASE}\"
+  POSTGRES_HOST: \"${SQL_HOST}\"
+  POSTGRES_PORT: \"5432\"
+  REDIS_HOST: \"${REDIS_HOST}\"
+  REDIS_PORT: \"6379\"
+
+handlers:
+- url: /static/assets
+  static_dir: superset/static/assets
+- url: /.*
+  secure: always
+  redirect_http_response_code: 301
+  script: auto

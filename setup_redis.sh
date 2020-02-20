@@ -10,5 +10,5 @@ gcloud compute networks vpc-access connectors create superset-redis-connector \
    --region ${REGION} \
    --range=10.8.0.0/28
    
-REDIS_IP_ADDRESS=$(gcloud redis instances describe ${REDIS_INSTANCE_NAME} --region=${REGION} | grep host | cut -d: -f2 | cut -c2-)
-export REDIS_IP_ADDRESS
+REDIS_HOST=$(gcloud redis instances describe ${REDIS_INSTANCE_NAME} --region=${REGION} | grep host | cut -d: -f2 | cut -c2-)
+export REDIS_HOST
