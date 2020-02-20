@@ -9,7 +9,7 @@ automatic_scaling:
 entrypoint: gunicorn -b :\$PORT -w 4 superset:app
 
 vpc_access_connector:
-  name: \"projects/${PROJECT_ID}/locations/${REGION}/connectors/${VPC_NETWORK}-connector\"
+  name: \"projects/${PROJECT_ID}/locations/${REGION}/connectors/superset-connector\"
 
 env_variables:
   SUPERSET_HOME: \"/tmp/superset\"

@@ -20,7 +20,7 @@ gcloud services vpc-peerings connect \
     --network=${VPC_NETWORK} \
     --project=${PROJECT_ID}
 
-gcloud compute networks vpc-access connectors create ${VPC_NETWORK}-connector \
+gcloud compute networks vpc-access connectors create superset-connector \
    --network ${VPC_NETWORK} \
    --region ${REGION} \
    --range=10.8.0.0/28
