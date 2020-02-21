@@ -24,3 +24,5 @@ gcloud compute networks vpc-access connectors create superset-connector \
    --network ${VPC_NETWORK} \
    --region ${REGION} \
    --range=10.8.0.0/28
+
+gcloud compute firewall-rules create ${VPC_NETWORK}-allow-ssh --allow tcp:22 --network=${VPC_NETWORK}   

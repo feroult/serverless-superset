@@ -1,7 +1,7 @@
 #!/bin/bash -xe
 
 run() {
-    docker run -v "$(pwd):/transfer" -it serverless-superset bash -c "cp /var/lib/superset/superset.tar.gz /transfer"
+    docker run -v "$(pwd):/transfer" -it gcr.io/${PROJECT_ID}/serverless-superset bash -c "cp /var/lib/superset/superset.tar.gz /transfer"
     tar -zxf *.tar.gz
     cd dist
     tar -zxvf apache*.tar.gz
