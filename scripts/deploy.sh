@@ -10,7 +10,7 @@ run() {
     cat ../../requirements-db.txt >> requirements.txt
     cp ../../../config/app.yaml .
     cp ../../../config/superset_config.py .
-    # gcloud app deploy -q
+    gcloud app deploy -q
 }
 
 rm -rf .staging && mkdir .staging
