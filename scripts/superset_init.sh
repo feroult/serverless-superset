@@ -28,11 +28,11 @@ if ! gcloud compute instances list | grep ${ADMIN_INSTANCE_NAME}; then
     create_admin_instance
 fi
 
-gcloud compute scp config/superset_config.py superset@${ADMIN_INSTANCE_NAME}:
+gcloud compute scp config/superset_config.py --zone ${ZONE} superset@${ADMIN_INSTANCE_NAME}:
 
 run_superset_command flask fab create-admin
 run_superset_command superset db upgrade
 run_superset_command superset init
 run_superset_command superset load_examples
 
-gcloud compute instances delete ${ADMIN_INSTANCE_NAME} -q
+gcloud compute instances delete ${ADMIN_INSTANCE_NAME} -q --zone ${ZONE}
