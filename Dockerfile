@@ -1,5 +1,5 @@
 ARG NODE_VERSION=latest
-ARG PYTHON_VERSION=3.7  
+ARG PYTHON_VERSION=3.7
 
 #
 # --- Build assets with NodeJS
@@ -72,7 +72,7 @@ RUN apt-get update && \
         libsasl2-modules-gssapi-mit \
         libssl1.0 && \
     apt-get clean && \
-    tar xzf superset.tar.gz && \ 
+    tar xzf superset.tar.gz && \
     pip install dist/*.tar.gz -r requirements-db.txt -r requirements.txt
 
 # Create superset user
