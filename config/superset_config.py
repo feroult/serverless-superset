@@ -10,6 +10,11 @@ APP_NAME = "Superset on GCP"
 SECRET_KEY = 'my-app-secret-123'
 DATA_DIR = "/tmp/superset-" + randomString(20)
 
+# Cookie policies
+# https://github.com/apache/incubator-superset/issues/8382
+SESSION_COOKIE_SAMESITE = None
+SESSION_COOKIE_HTTPONLY = False
+
 # Mapbox
 MAPBOX_API_KEY = os.getenv('MAPBOX_API_KEY', '')
 
