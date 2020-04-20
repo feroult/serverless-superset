@@ -15,6 +15,10 @@ DATA_DIR = "/tmp/superset-" + randomString(20)
 SESSION_COOKIE_SAMESITE = None
 SESSION_COOKIE_HTTPONLY = False
 
+
+# Add a row limit
+ROW_LIMIT = 5000
+
 # Mapbox
 MAPBOX_API_KEY = os.getenv('MAPBOX_API_KEY', '')
 
