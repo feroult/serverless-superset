@@ -1,6 +1,6 @@
 #!/bin/bash -xe
 
-gcloud beta sql instances create ${SQL_INSTANCE_NAME} --database-version=POSTGRES_11 \
+gcloud beta sql instances create ${SQL_INSTANCE_NAME} --database-version=POSTGRES_12 \
         --tier=db-g1-small \
         --region ${REGION} \
         --network ${VPC_NETWORK} \
