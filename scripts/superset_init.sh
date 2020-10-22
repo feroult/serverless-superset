@@ -35,4 +35,4 @@ run_superset_command superset db upgrade
 run_superset_command superset init
 run_superset_command superset load_examples
 
-gcloud compute instances delete ${ADMIN_INSTANCE_NAME} -q
+gcloud compute instances delete ${ADMIN_INSTANCE_NAME} --zone ${ZONE} -q
