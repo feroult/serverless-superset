@@ -10,7 +10,6 @@ run() {
     cat ../../requirements-db.txt >> requirements.txt
     cp ../../../config/app.yaml .
     cp ../../../config/superset_config.py .
-    gcloud app create --region ${REGION} -q
     gcloud app deploy -q
 }
 
